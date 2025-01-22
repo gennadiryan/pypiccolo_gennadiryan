@@ -11,19 +11,20 @@ dependencies = [
 requires-python = ">=3.12"
 authors = [
     { name = "Gennadi Ryan", email = "gennadiryan@gmail.org" },
-    { name = "Jack Champagne", email = "example@example.com" },
+    # { name = "Jack Champagne", email = "jchampag@andrew.cmu.edu" },
 ]
 # maintainers = [
 #     { name = "example", email = "example@example.com" },
 # ]
-# description = ""
+description = "Python wrapper of Piccolo.jl"
 readme = "README.md"
 license = { file = "LICENSE" }
 # keywords = ["hello", "world",]
-# classifiers = [
+classifiers = [
+    "Development Status :: 3 - Alpha",
 #     "Programming Language :: Python :: 3",
 #     "Operating System :: OS Independent",
-# ]
+]
 
 [project.urls]
 # Homepage = ""
