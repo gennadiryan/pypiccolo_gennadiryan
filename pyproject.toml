@@ -8,9 +8,9 @@ build-backend = "setuptools.build_meta"
 name = "pypiccolo_gennadiryan"
 version = "0.0.1"
 description = "Python wrapper of Piccolo.jl"
-readme = { file = "README.md", content-type = "text/markdown", }
-requires-python = ">=3.12"
-license = { text = "MIT License", file = "LICENSE", }
+readme = "README.md"
+requires-python = ">=3.13"
+license = { file = "LICENSE" }
 keywords = [
     "quantum",
     "physics",
@@ -38,6 +38,10 @@ dependencies = [
 tests = [
     "pytest>=8.3",
 ]
+other_tests = [
+    "pytest>=8.3",
+    "qutip",
+]
 
 [project.urls]
 # Homepage = ""
@@ -46,6 +50,8 @@ tests = [
 # Issues = "https://github.org/[organization]/[repository]/issues"
 # Changelog = "https://github.com/[organization]/[repository]/blob/main/CHANGELOG.md"
 
-[tools.setuptools]
-# package-dir = { "" = "src", "tests" = "tests", }
+[tool.setuptools]
+# package-dir = { "" = "src", "tests" = "tests" }
+# package-dir = { "" = "src", "tests" = "tests" }
+package-dir = { "" = "src" }
 # packages = [ "pypiccolo_gennadiryan", ]
