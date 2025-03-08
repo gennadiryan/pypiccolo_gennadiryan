@@ -1,4 +1,4 @@
-from . import utils
+from . import math_utils
 
 def say_random(shape):
-    print(utils.random_array(shape))
+    print(math_utils.random_array(shape))
