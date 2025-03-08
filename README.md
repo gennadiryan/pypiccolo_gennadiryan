@@ -3,8 +3,8 @@
 ## Build
 
 ```
-python3 -m venv env
-source env/bin/activate
+python3 -m venv build_env
+source build_env/bin/activate
 pip install --upgrade pip
 pip install build
 python -m build
@@ -30,10 +30,10 @@ unzip *.whl
 
 ```
 deactivate
-rm -rf dist src/pypiccolo_gennadiryan.egg-info env
+rm -rf dist src/pypiccolo_gennadiryan.egg-info build_env
 ```
 
-## Publish
+## Push
 
 ### Manual publication
 
@@ -41,7 +41,34 @@ TODO
 
 ### Automated publication (via `.pypirc`)
 
-TODO
+```
+mkdir -p path/to/registries/testpypi
+touch path/to/registries/testpypi/.pypirc
+chmod 600 path/to/registries/testpypi/.pypirc
+```
+
+```
+echo "\
+[distutils]\n\
+  index-servers = testpypi\n\
+" >> path/to/registries/testpypi/.pypirc
+
+echo "\
+[testpypi]\n\
+  username = __token__\n\
+  password = ${TOKEN}\n\
+" >> path/to/registries/testpypi/.pypirc
+```
+
+```
+python3 -m venv push_env
+source push_env/bin/activate
+pip install --upgrade pip
+pip install twine
+HOME=path/to/registries/testpypi twine upload --repository=testpypi dist/*
+deactivate
+rm -rf push_env
+```
 
 ### Automated publication (via CI/CD)
 
@@ -50,6 +77,18 @@ TODO
 ### Note
 
 - Unfortunately, public Python version identifiers are not fully compatible with semantic versioning identifiers (see https://packaging.python.org/en/latest/specifications/version-specifiers/), although they are compatible with the `X.Y.Z` notation of semantic versioning for major/minor/patch version numbers, and there exists an analogous notion of release candidates.
+
+
+## Pull
+
+```
+python3 -m venv pull_env
+source pull_env/bin/activate
+pip install --upgrade pip
+pip install --index-url https://test.pypi.org/simple/ --extra-index-url https://pypi.org/simple/ pypiccolo-gennadiryan==0.0.1a1.dev1
+deactivate
+rm -rf pull_env
+```
 
 ## Setuptools usage
 
