@@ -38,19 +38,14 @@ dependencies = [
 tests = [
     "pytest>=8.3",
 ]
-other_tests = [
-    "pytest>=8.3",
-    "qutip",
-]
 
 [project.urls]
 # Homepage = ""
 # Documentation = ""
-# Repository = "https://github.org/[organization]/[repository].git"
-# Issues = "https://github.org/[organization]/[repository]/issues"
+# Repository = "https://github.com/[organization]/[repository].git"
+# Issues = "https://github.com/[organization]/[repository]/issues"
 # Changelog = "https://github.com/[organization]/[repository]/blob/main/CHANGELOG.md"
+Repository = "https://github.com/gennadiryan/pypiccolo_gennadiryan.git"
 
 [tool.setuptools]
-# package-dir = { "" = "src", "tests" = "tests" }
-# packages = [ "pypiccolo_gennadiryan", ]
 package-dir = { "" = "src" }
