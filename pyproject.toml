@@ -52,6 +52,5 @@ other_tests = [
 
 [tool.setuptools]
 # package-dir = { "" = "src", "tests" = "tests" }
-# package-dir = { "" = "src", "tests" = "tests" }
-package-dir = { "" = "src" }
 # packages = [ "pypiccolo_gennadiryan", ]
+package-dir = { "" = "src" }
