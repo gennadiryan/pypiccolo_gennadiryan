@@ -10,6 +10,22 @@ pip install build
 python -m build
 ```
 
+### Inspect distributions
+
+#### Source distribution
+
+```
+cd dist
+tar -xvf *.tar.gz
+```
+
+#### Binary distribution
+
+```
+cd dist
+unzip *.whl
+```
+
 ### Tear down build and build environment
 
 ```
@@ -17,7 +33,25 @@ deactivate
 rm -rf dist src/pypiccolo_gennadiryan.egg-info env
 ```
 
-## Setuptools
+## Publish
+
+### Manual publication
+
+TODO
+
+### Automated publication (via `.pypirc`)
+
+TODO
+
+### Automated publication (via CI/CD)
+
+TODO
+
+### Note
+
+- Unfortunately, public Python version identifiers are not fully compatible with semantic versioning identifiers (see https://packaging.python.org/en/latest/specifications/version-specifiers/), although they are compatible with the `X.Y.Z` notation of semantic versioning for major/minor/patch version numbers, and there exists an analogous notion of release candidates.
+
+## Setuptools usage
 
 ### Notes on package discovery, package data, and runtime configuration
 
@@ -31,9 +65,7 @@ rm -rf dist src/pypiccolo_gennadiryan.egg-info env
 
 - All of the `[project]` table entries of the `pyproject.toml` are standardized, with the exception of `license`. The PEP 639 standard defines new `[project]` table entries `license` (corresponding to a valid SPDX license expression) and `license-files` (corresponding to a list of license file glob paths). As `setuptools` is yet to support this standard, the legacy declaration is used instead; it is of the form `license = { text = "MIT License" }` or `license = { file = "LICENSE" }`. Note that other license files will still be included in the metadata, and hence both the source and binary distributions, unless the `license-files` entry of the `[tool.setuptools]` table is also used. It is expected that once `setuptools` adds support for PEP 639 that the `license-files` entry of the `[tools.setuptools]` table will be deprecated (or at least redundant).
 
-- Inspect with `tar tf dist/*.tar.gz; unzip -l dist/*.whl;`
-
-- Ensure backward-compatible with `setup.py` containing `from setuptools import setup; setup();`
+- Depending on the versions of Python, `build`, and `setuptools` that are employed, it may be necessary to include a boilerplate `setup.py` file consisting of `from setuptools import setup; setup();` for backwards compatibility.
 
 ## References
 
@@ -53,6 +85,7 @@ rm -rf dist src/pypiccolo_gennadiryan.egg-info env
 
 ### Specifications
 
+- https://packaging.python.org/en/latest/specifications/version-specifiers/
 - https://packaging.python.org/en/latest/specifications/pyproject-toml/
 - https://packaging.python.org/en/latest/specifications/pypirc/
 - https://pypi.org/classifiers/
